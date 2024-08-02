@@ -10,11 +10,13 @@ function App() {
   const [jsonResponse, setJSONResponse] = useState([]);
   const [showDropdown, setShowDropdown] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
+  const API_URL = import.meta.env.VITE_API_URL;
+  console.log("api",API_URL);
   
   const handleSubmit = async () => {
     try {
       const data = apiInput;
-      const res = await axios.post("/api/bfhl", data,  {
+      const res = await axios.post(`${API_URL}/api/bfhl`, data,  {
         headers: {
           'Content-Type': 'application/json' // Specify content type
         }
@@ -43,7 +45,7 @@ function App() {
     })
   }, [])
   useEffect(()=> {
-    console.log(jsonResponse);
+    // console.log(jsonResponse);
   }, [jsonResponse])
 
   return (
