@@ -11,7 +11,6 @@ function App() {
   const [showDropdown, setShowDropdown] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
   const API_URL = import.meta.env.VITE_API_URL;
-  console.log("api",API_URL);
   
   const handleSubmit = async () => {
     try {
@@ -33,7 +32,7 @@ function App() {
     console.log(event.target.value);
   };
   useEffect(() => {
-    console.log("resdata: ", resData?.numbers);
+    console.log("resdata: ", resData);
   }, [resData])
   useEffect(() => {
     axios.get("/api/bfhl")
@@ -44,9 +43,9 @@ function App() {
       console.log(error);
     })
   }, [])
-  useEffect(()=> {
-    // console.log(jsonResponse);
-  }, [jsonResponse])
+  // useEffect(()=> {
+  //   console.log(jsonResponse);
+  // }, [jsonResponse])
 
   return (
     <>
@@ -60,13 +59,14 @@ function App() {
             <option value="alphabets">Alphabets</option>
             <option value="numbers">Numbers</option>
             <option value="highestAlpha">Highest Alphabet</option>
+            <option value="Show All">Show All</option>
           </select>
         </div>
       )}
     <div>
-      {resData?.numbers.length && selectedOption == "numbers" ? <p>Numbers: <span>{resData?.numbers?.map(no => <span>{no},</span>)}</span></p> : null }
-      {resData?.alphabets.length && selectedOption == "alphabets" != 0 ? <p>Alphabets: <span>{resData?.alphabets?.map(alpha => <span>{alpha},</span>)}</span></p>: null}
-      {resData?.highest_alphabet.length && selectedOption == "highestAlpha" != 0 ? <p>Highest Alphabet: <span>{resData?.highest_alphabet}</span></p>: null}
+      {resData?.numbers.length && (selectedOption == "numbers" || selectedOption == "Show All") ? <p>Numbers: <span>{resData?.numbers?.map(no => <span>{no},</span>)}</span></p> : null }
+      {resData?.alphabets.length && (selectedOption == "alphabets" || selectedOption == "Show All") != 0 ? <p>Alphabets: <span>{resData?.alphabets?.map(alpha => <span>{alpha},</span>)}</span></p>: null}
+      {resData?.highest_alphabet.length && (selectedOption == "highestAlpha" || selectedOption == "Show All") != 0 ? <p>Highest Alphabet: <span>{resData?.highest_alphabet}</span></p>: null}
     </div>
     </>
   )
