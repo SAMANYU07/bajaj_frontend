@@ -32,7 +32,6 @@ function App() {
     console.log(event.target.value);
   };
   useEffect(() => {
-    console.log("resdata: ", resData);
   }, [resData])
   useEffect(() => {
     axios.get("/api/bfhl")
