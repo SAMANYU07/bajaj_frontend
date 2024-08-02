@@ -64,8 +64,8 @@ function App() {
         </div>
       )}
     <div>
-      {resData?.numbers.length && selectedOption == "numbers" ? <p>Numbers: <span>{resData?.numbers}</span></p> : null }
-      {resData?.alphabets.length && selectedOption == "alphabets" != 0 ? <p>Alphabets: <span>{resData?.alphabets}</span></p>: null}
+      {resData?.numbers.length && selectedOption == "numbers" ? <p>Numbers: <span>{resData?.numbers?.map(no => <span>{no},</span>)}</span></p> : null }
+      {resData?.alphabets.length && selectedOption == "alphabets" != 0 ? <p>Alphabets: <span>{resData?.alphabets?.map(alpha => <span>{alpha},</span>)}</span></p>: null}
       {resData?.highest_alphabet.length && selectedOption == "highestAlpha" != 0 ? <p>Highest Alphabet: <span>{resData?.highest_alphabet}</span></p>: null}
     </div>
     </>
