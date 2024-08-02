@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      "/api": "https://bajaj-backend-roan.vercel.app/",
+      "/api": "https://bajaj-backend-roan.vercel.app",
     }
   }
 })
